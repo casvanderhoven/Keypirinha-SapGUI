@@ -3,7 +3,9 @@
 This is SapGUI, a plugin for the
 [Keypirinha](http://keypirinha.com) launcher.
 
-This package insert all SAP GUI Entries to the Keypirinha Catalog
+This package insert all SAP GUI Entries to the Keypirinha Catalog.
+
+Personal fork to include SNC logon parameters for automatic logon.
 
 ## Download
 
