@@ -4,6 +4,7 @@ import keypirinha as kp
 import keypirinha_util as kpu
 import keypirinha_net as kpnet
 import os
+import subprocess
 import xml.etree.ElementTree as ET
 
 class SapGUI(kp.Plugin):
@@ -59,9 +60,9 @@ class SapGUI(kp.Plugin):
 
     def on_execute(self, item, action):
         self.dbg(self.items[item.target()])
-        command = "\""+ self.sapgui_path +"\" " + self.items[item.target()].routerserver + "" + self.items[item.target()].ip + " " + self.items[item.target()].instance
+        command = "\""+ self.sapgui_path +"\" /SHORTCUT=\"-gui=\"" + self.items[item.target()].routerserver + "" + self.items[item.target()].ip + " " + self.items[item.target()].instance + "\" -sid=" + self.items[item.target()].systemid + " -snc_name=\"" + self.items[item.target()].sncname + "\" -snc_qop=" + self.items[item.target()].sncop
         self.dbg(command)
-        os.system(os.path.expandvars(command))
+        subprocess.Popen(command, shell=True)
 
     def on_activated(self):
         pass
