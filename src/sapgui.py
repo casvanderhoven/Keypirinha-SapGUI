@@ -38,7 +38,7 @@ class SapGUI(kp.Plugin):
                     if entrie.get('routerid') == router.get('uuid'):
                         routerserver = router.get('router')
                         self.dbg(routerserver)
-            self.items[str(entrie.get('uuid'))] = ItemSapGUI(str(entrie.get('name')), str(entrie.get('systemid')), str(entrie.get('server')), routerserver)
+            self.items[str(entrie.get('uuid'))] = ItemSapGUI(str(entrie.get('name')), str(entrie.get('systemid')), str(entrie.get('sncname')), str(entrie.get('sncop')), str(entrie.get('server')), routerserver)
 
         catalog = []
         self.dbg("on_catalog")
@@ -86,10 +86,14 @@ class ItemSapGUI():
     ip = ""
     instance = ""
     routerserver = ""
+    sncname = ""
+    sncop = ""
 
-    def __init__(self, nome, systemid, server, routerserver):
+    def __init__(self, nome, systemid, sncname, sncop, server, routerserver):
         self.nome = nome
         self.systemid = systemid
+        self.sncname = sncname
+        self.sncop = sncop
         if routerserver:
             self.routerserver = routerserver + "/H/"
         try:
@@ -97,4 +101,3 @@ class ItemSapGUI():
             self.instance = self.instance.replace('32', '')
         except ValueError:
             self.ip = server
-        
