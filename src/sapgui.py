@@ -60,7 +60,7 @@ class SapGUI(kp.Plugin):
 
     def on_execute(self, item, action):
         self.dbg(self.items[item.target()])
-        command = "\""+ self.sapgui_path +"\" /SHORTCUT=\"-gui=\"" + self.items[item.target()].routerserver + "" + self.items[item.target()].ip + " " + self.items[item.target()].instance + "\" -sid=" + self.items[item.target()].systemid + " -snc_name=\"" + self.items[item.target()].sncname + "\" -snc_qop=" + self.items[item.target()].sncop
+        command = "\""+ self.sapgui_path +"\" /SHORTCUT=\"-gui=\"" + self.items[item.target()].routerserver + "" + self.items[item.target()].ip + " " + self.items[item.target()].instance + "\" -sid=" + self.items[item.target()].systemid + " -snc_name=\"" + self.items[item.target()].sncname + "\" -language=NL -snc_qop=" + self.items[item.target()].sncop
         self.dbg(command)
         subprocess.Popen(command, shell=True)
 
